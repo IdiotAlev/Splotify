@@ -1,0 +1,7 @@
+{
+  "name": "splotify",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
