@@ -1,3 +1,4 @@
+// Rutas de todas las paginas de la aplicacion 
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [

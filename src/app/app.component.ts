@@ -1,3 +1,4 @@
+//llamar a los componentes q se usaran en las paginas de la app
 import { Component } from '@angular/core';
 import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
 
