@@ -21,6 +21,23 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 })
 export class HomePage {
   //variables y datos que se usaran en la vista "home.page.html"
+
+  ligthPrimaryColor='var(--Primary-Color-Ligth-Theme)';
+  darkPrimaryColor='var(--Secundary-Color-Ligth-Theme)';
+  ligthSecondaryColor='var(--Secundary-Color-Ligth-Theme)';
+  darkSecondaryColor='var(--Secundary-Color-Dark-Theme)';
+
+  fontLigthColor='var(--Color-Font-Dark-Theme)';
+  fontDarkColor='var(--Color-Font-ligth-Theme)';
+
+  acentLigthColor='var(--Accent-Color-Ligth-Theme)';
+  acentColorDark='var(--Accent-Color-Dark-Theme)';
+
+  backgroundTheme = this.ligthPrimaryColor;
+  fontTheme = this.fontLigthColor;
+  acentTheme = this.acentLigthColor;
+
+
   genres= [ 
     {
       title: 'Rock music',
@@ -42,5 +59,12 @@ export class HomePage {
   //funciones que se usaran en la vista "home.page.html"
   viEstaSlide() {
     console.log('A');
+  }
+
+  cambiarTema() {
+    this.backgroundTheme = this.backgroundTheme === this.ligthPrimaryColor ? this.darkPrimaryColor : this.ligthPrimaryColor;
+    this.fontTheme = this.fontTheme === this.fontLigthColor ? this.fontDarkColor : this.fontLigthColor;
+    this.acentTheme = this.acentTheme === this.acentLigthColor ? this.acentColorDark : this.acentLigthColor;
+    console.log('Tema cambiado a:', this.backgroundTheme);
   }
 }

@@ -7,6 +7,17 @@
 </ion-header>
 
 <ion-content>
+  <ion-buton (click)="cambiarTema()">Cambiar tema</ion-buton>
+  
+  <ion-card [style.background-Color]="backgroundTheme" [style.color]="fontTheme">
+    
+    <h2>Welcome to Splotify</h2>
+
+    <ion-card-content>
+      <p>Discover a world of music genres and explore your favorites!</p>
+    </ion-card-content>
+  </ion-card>
+
   <swiper-container
     pagination="true"
     navigation="false"
@@ -16,13 +27,12 @@
     >
 
     <swiper-slide *ngFor="let genre of genres">
-      <div class="slide-content">
+      <div class="slide-content" [style.background-Color]="backgroundTheme" [style.color]="fontTheme">
         <h2>{{ genre.title }}</h2>
         <img [src]="genre.image" [alt]=" genre.title">
-        <p>{{ genre.description }}</p> <br>
-        <ion-button (click)="viEstaSlide()">Ver más</ion-button>
+        <p>{{ genre.description }}</p><br>
+        <ion-button (click)="viEstaSlide()"><ion-icon icon="start">Ver mas</ion-icon></ion-button>
       </div>
     </swiper-slide>
-
   </swiper-container> 
 </ion-content>

@@ -1,2 +1,24 @@
-// For information on how to create your own theme, please see:
-// http://ionicframework.com/docs/theming/
+:root{
+    //Paleta de colores 
+    
+    // Primary Colors
+    --Primary-Color-Ligth-Theme: #265a5f;
+    --Primary-Color-Dark-Theme: #a0d4d9;
+    --Secundary-Color-Ligth-Theme: #87d0de;
+    --Secundary-Color-Dark-Theme: #216a78;
+    
+    // Accent Colors
+    --Accent-Color-Ligth-Theme: #23b7d1;
+    --Accent-Color-Dark-Theme: #2ec1dc;
+
+    // Font Colors
+    --Color-Font-ligth-Theme: #0b0e0f;
+    --Color-Font-Dark-Theme: #f8fbfc;
+
+    // Background Colors
+    --Background-Color-Ligth-Theme: #f8fbfc;
+    --Background-Color-Dark-Theme: #030607;
+
+    
+
+}

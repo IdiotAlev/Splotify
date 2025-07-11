@@ -1,22 +1,28 @@
 .slide-content {
   text-align: center;
   padding: 20px;
+  background-color: var(--Secundary-Color-Dark-Theme); /* Optional: Change background color */
+  color: var(--Color-Font-ligth-Theme); /* Optional: Change text color */
 }
 
 .slide-content img {
   width: 50%;
   height: 50%;
-  border-radius: 10%; /* Optional: Add some border radius for aesthetics */
-  margin: 10px; /* Optional: Add some margin for spacing */
+  
 }
 
 .slide-content h2 {
   font-size: 3.5em;
-  border: 2px solid aqua; /* Optional: Add a border for emphasis */
-  border-color: aqua;
+  color: var(--Color-Font-dark-Theme);/* Optional: Add a border for emphasis */
+  border-radius: 1px;
 }
 
 .slide-content p {
   font-size: 1em;
   color: #333; /* Optional: Change text color */
+}
+
+.button{
+color: var(--Accent-Color-Ligth-Theme);
+background-color: red;
 }
