@@ -18,6 +18,16 @@
     </ion-card-content>
   </ion-card>
 
+  <ion-card [style.background-Color]="backgroundTheme" [style.color]="fontTheme">
+    
+    <h2>Wanna see how to use Splotify?</h2>
+
+    <ion-card-content>
+      <p>Click the button below to watch the introduction video.</p>
+      <ion-button (click)="watchIntro()">Watch Intro</ion-button>
+    </ion-card-content>
+  </ion-card>
+
   <swiper-container
     pagination="true"
     navigation="false"
@@ -30,9 +40,10 @@
       <div class="slide-content" [style.background-Color]="backgroundTheme" [style.color]="fontTheme">
         <h2>{{ genre.title }}</h2>
         <img [src]="genre.image" [alt]=" genre.title">
-        <p>{{ genre.description }}</p><br>
-        <ion-button (click)="viEstaSlide()"><ion-icon icon="start">Ver mas</ion-icon></ion-button>
+        <p>{{ genre.description }}</p><br>  
+        <ion-button (click)="viEstaSlide()">Ver mas</ion-button>
       </div>
     </swiper-slide>
   </swiper-container> 
+
 </ion-content>

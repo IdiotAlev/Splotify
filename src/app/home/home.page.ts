@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 import { IonicModule} from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   //urls que afectan esta vista
@@ -22,6 +23,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 export class HomePage {
   //variables y datos que se usaran en la vista "home.page.html"
 
+  //variables que guardan los colores que se usaran en la vista "home.page.html"
   ligthPrimaryColor='var(--Primary-Color-Ligth-Theme)';
   darkPrimaryColor='var(--Secundary-Color-Ligth-Theme)';
   ligthSecondaryColor='var(--Secundary-Color-Ligth-Theme)';
@@ -37,7 +39,7 @@ export class HomePage {
   fontTheme = this.fontLigthColor;
   acentTheme = this.acentLigthColor;
 
-
+  //arreglo de objetos que guardan los generos musicales que se usaran en la vista "home.page.html"
   genres= [ 
     {
       title: 'Rock music',
@@ -55,16 +57,25 @@ export class HomePage {
       description: 'La música pop es un género musical popular que abarca una amplia variedad de estilos y ritmos, caracterizado por su accesibilidad y atractivo comercial. Se originó en la cultura juvenil de mediados del siglo XX y ha evolucionado a lo largo de las décadas.'
     }
   ];
-  constructor() {}
-  //funciones que se usaran en la vista "home.page.html"
+
+  //constructor que se usa para inicializar la vista "home.page.html"
+  constructor(private router:Router) {}
+
+  //metodos que se usan en la vista "home.page.html"
   viEstaSlide() {
     console.log('A');
   }
 
+  //metodo que cambia el tema de la vista "home.page.html"
   cambiarTema() {
     this.backgroundTheme = this.backgroundTheme === this.ligthPrimaryColor ? this.darkPrimaryColor : this.ligthPrimaryColor;
     this.fontTheme = this.fontTheme === this.fontLigthColor ? this.fontDarkColor : this.fontLigthColor;
     this.acentTheme = this.acentTheme === this.acentLigthColor ? this.acentColorDark : this.acentLigthColor;
     console.log('Tema cambiado a:', this.backgroundTheme);
+  }
+
+  watchIntro() {
+    console.log('Watch Intro');
+    this.router.navigateByUrl('/intro');
   }
 }
