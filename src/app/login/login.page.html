@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <figure class="profile-default-image ion-text-center">
+    <p>usuario</p>
+    <img src="assets\images\default-user-icon-12.png" alt="Imagen defaul usuario">
+  </figure>
+
+  <form [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)">
+    <ion-item>
+      <ion-input labelPlacement="floating" label="email" type="email" placeholder="example@splotify.com" formControlName="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input labelPlacement="floating" label="Password" type="password" placeholder="#MyPassw0rd123*" formControlName="password"></ion-input>
+    </ion-item>
+
+    <div>
+      <ng-container *ngfor="let validation of validationMessages.email">
+        <div *ngif="(
+          loginForm.get('email')?.hasError(validation.type) && loginForm.get('email')?.dirty
+          )">
+          {{validation.message}}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-button
+     [disabled]="!loginForm.valid"
+     type="submit">
+     Login
+    </ion-button>
+
+  </form>
+  
+</ion-content>
