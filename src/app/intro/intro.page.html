@@ -5,6 +5,23 @@
 </ion-header>
 
 <ion-content>
-  <ion-title size="large">Soy intro</ion-title>
-  <ion-button (click)="goBack()">Go back</ion-button>
+  
+  <swiper-container
+    pagination="true"
+    navigation="false"
+    scrollbar="false"
+    slides-per-view="1"
+    style="width: 100%; height: 100%;"
+    >
+
+    <swiper-slide *ngFor="let genre of genres">
+      <div class="slide-content" [style.background-Color]="backgroundTheme" [style.color]="fontTheme">
+        <h2>{{ genre.title }}</h2>
+        <img [src]="genre.image" [alt]=" genre.title">
+        <p>{{ genre.description }}</p><br> 
+        <ion-icon name="add-outline"></ion-icon> 
+      </div>
+    </swiper-slide>
+  </swiper-container> 
+
 </ion-content>

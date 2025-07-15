@@ -39,25 +39,6 @@ export class HomePage {
   fontTheme = this.fontLigthColor;
   acentTheme = this.acentLigthColor;
 
-  //arreglo de objetos que guardan los generos musicales que se usaran en la vista "home.page.html"
-  genres= [ 
-    {
-      title: 'Rock music',
-      image: 'https://miro.medium.com/v2/resize:fit:1400/0*iUdNvJPdET3lwupr',
-      description: 'El rock and roll o rocanrol​ es un género musical de ritmo marcado, derivado de una mezcla de diversos géneros de música folclórica estadounidense y popularizado desde los años 1950.​​'
-    },
-    {
-      title: 'Electronic music',
-      image: 'https://www.mashedinplastic.co.uk/wp-content/uploads/2022/05/electronic.jpg',
-      description: 'La música electrónica es un género musical que utiliza instrumentos electrónicos y tecnología digital para crear sonidos y ritmos innovadores. Se caracteriza por su diversidad de estilos, desde la música dance hasta la ambient.'
-    },
-    {
-      title: 'Pop music',
-      image: 'https://i8.amplience.net/i/naras/RA_2023_In_Review_POP_HeroCollage_1644x925%202',
-      description: 'La música pop es un género musical popular que abarca una amplia variedad de estilos y ritmos, caracterizado por su accesibilidad y atractivo comercial. Se originó en la cultura juvenil de mediados del siglo XX y ha evolucionado a lo largo de las décadas.'
-    }
-  ];
-
   //constructor que se usa para inicializar la vista "home.page.html"
   constructor(private router:Router) {}
 

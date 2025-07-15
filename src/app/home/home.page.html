@@ -6,7 +6,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content >
   <ion-buton (click)="cambiarTema()">Cambiar tema</ion-buton>
   
   <ion-card [style.background-Color]="backgroundTheme" [style.color]="fontTheme">
@@ -28,22 +28,9 @@
     </ion-card-content>
   </ion-card>
 
-  <swiper-container
-    pagination="true"
-    navigation="false"
-    scrollbar="false"
-    slides-per-view="1"
-    style="width: 100%; height: 100%;"
-    >
-
-    <swiper-slide *ngFor="let genre of genres">
-      <div class="slide-content" [style.background-Color]="backgroundTheme" [style.color]="fontTheme">
-        <h2>{{ genre.title }}</h2>
-        <img [src]="genre.image" [alt]=" genre.title">
-        <p>{{ genre.description }}</p><br>  
-        <ion-button (click)="viEstaSlide()">Ver mas</ion-button>
-      </div>
-    </swiper-slide>
-  </swiper-container> 
-
+  <div>
+    <p class="ion-text-center">texto centrado</p>
+    <p class="ion-text-left">texto izquierda</p>
+    <p class="ion-text-right">texto derecha</p>
+  </div>
 </ion-content>
