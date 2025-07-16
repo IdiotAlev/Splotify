@@ -18,19 +18,11 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-card [style.background-Color]="backgroundTheme" [style.color]="fontTheme">
-    
-    <h2>Wanna see how to use Splotify?</h2>
-
-    <ion-card-content>
-      <p>Click the button below to watch the introduction video.</p>
-      <ion-button (click)="watchIntro()">Watch Intro</ion-button>
-    </ion-card-content>
-  </ion-card>
-
   <div>
-    <p class="ion-text-center">texto centrado</p>
-    <p class="ion-text-left">texto izquierda</p>
-    <p class="ion-text-right">texto derecha</p>
+    <h3>Demo storage</h3>
+    <p>Guardar color de tema del storage</p>
+    <div [style.background-Color]="backgroundTheme" [style.color]="fontTheme"></div>
+    <p>Tema actual:{{backgroundTheme === ligthPrimaryColor ? 'obscuro' : 'claro'}}</p>
   </div>
+
 </ion-content>

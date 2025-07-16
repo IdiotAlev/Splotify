@@ -19,7 +19,9 @@
         <h2>{{ genre.title }}</h2>
         <img [src]="genre.image" [alt]=" genre.title">
         <p>{{ genre.description }}</p><br> 
-        <ion-icon name="add-outline"></ion-icon> 
+        
+        <ion-button (click)="goHome()">Empecemos</ion-button>
+
       </div>
     </swiper-slide>
   </swiper-container> 

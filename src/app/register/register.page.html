@@ -1,20 +1,17 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>login</ion-title>
+    <ion-title>register</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="profile-default">
     <figure>
-
-      <img src="assets\images\default-user-icon-12.png" alt="Imagen default usuario">
+      <img src="assets/images/default-user-icon-12.png" alt="Imagen default usuario">
       <p>User credentials</p>
     </figure>
 
-  </div>
-
-  <form  class="loginForm"  [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)">
+    <form  class="registerForm"  [formGroup]="registerForm" (ngSubmit)="registerUser(registerForm.value)">
     <ion-item>
       <ion-input labelPlacement="floating" label="email" type="email" placeholder="example@splotify.com" formControlName="email"></ion-input>
     </ion-item>
@@ -23,10 +20,14 @@
       <ion-input labelPlacement="floating" label="Password" type="password" placeholder="#MyPassw0rd123*" formControlName="password"></ion-input>
     </ion-item>
 
+    <ion-item>
+      <ion-input labelPlacement="floating" label="Confirm ur Password" type="password" placeholder="#MyPassw0rd123*" formControlName="confirmPassword"></ion-input>
+    </ion-item>
+
     <div>
       <ng-container *ngFor="let validation of validationMessages.email">
         <div *ngIf="(
-          loginForm.get('email')?.hasError(validation.type) && loginForm.get('email')?.dirty
+          registerForm.get('email')?.hasError(validation.type) && registerForm.get('email')?.dirty
           )">
           {{validation.message}}
         </div>
@@ -34,20 +35,29 @@
 
       <ng-container *ngFor="let validation of validationMessages.password">
         <div *ngIf="(
-          loginForm.get('password')?.hasError(validation.type) && loginForm.get('password')?.dirty
+          registerForm.get('password')?.hasError(validation.type) && registerForm.get('password')?.dirty
           )">
           {{validation.message}}
         </div>
       </ng-container>
+
+      <ng-container *ngFor="let validation of validationMessages.confirmPassword">
+        <div *ngIf="(
+          registerForm.get('confirmPassword')?.hasError(validation.type) && registerForm.get('confirmPassword')?.dirty
+          )">
+          {{validation.message}}
+        </div>
+      </ng-container>
+
     </div>
 
     <ion-button
-     [disabled]="!loginForm.valid"
+     [disabled]="!registerForm.valid"
      type="submit">
      Login
     </ion-button>
   </form>
-
-  {{errorMessage}}
   
+
+  </div>
 </ion-content>

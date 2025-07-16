@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { StorageService } from '../services/storage.service';
 
 @Component({
   selector: 'app-intro',
@@ -52,13 +53,14 @@ export class IntroPage implements OnInit {
   ];
 
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private Storage: StorageService) { }
 
   ngOnInit() {
   }
 
-  goBack() {
-    console.log("Go back clicked");
+  goHome() {
+    console.log("Go home clicked");
+    this.Storage.set("intro viwed", true);
     this.router.navigateByUrl("/home");
   }
 }

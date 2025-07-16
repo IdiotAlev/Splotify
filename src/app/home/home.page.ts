@@ -8,6 +8,7 @@ import { IonicModule} from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Router } from '@angular/router';
+import { StorageService } from '../services/storage.service';
 
 @Component({
   //urls que afectan esta vista
@@ -40,23 +41,56 @@ export class HomePage {
   acentTheme = this.acentLigthColor;
 
   //constructor que se usa para inicializar la vista "home.page.html"
-  constructor(private router:Router) {}
+  constructor(private router:Router , private storageService:StorageService) {}
 
   //metodos que se usan en la vista "home.page.html"
   viEstaSlide() {
     console.log('A');
   }
 
+  async ngOnInit() {
+    // Este método se ejecuta al inicializar el componente
+    await this.loadStorageData();
+  }
+
+
+  async loadStorageData() {
+
+    const savedTheme = await this.storageService.get('theme');
+    if (savedTheme) {
+      console.log('Tema guardado en storage:', savedTheme);
+      this.backgroundTheme = savedTheme;
+      
+    }
+
+  }
+
   //metodo que cambia el tema de la vista "home.page.html"
-  cambiarTema() {
+  async cambiarTema() {
     this.backgroundTheme = this.backgroundTheme === this.ligthPrimaryColor ? this.darkPrimaryColor : this.ligthPrimaryColor;
     this.fontTheme = this.fontTheme === this.fontLigthColor ? this.fontDarkColor : this.fontLigthColor;
     this.acentTheme = this.acentTheme === this.acentLigthColor ? this.acentColorDark : this.acentLigthColor;
     console.log('Tema cambiado a:', this.backgroundTheme);
-  }
 
-  watchIntro() {
-    console.log('Watch Intro');
-    this.router.navigateByUrl('/intro');
+    // Guardar el tema actual en el almacenamiento local
+    await this.storageService.set('theme', this.backgroundTheme)
+    console.log('Tema guardado en storage:', this.backgroundTheme);
+  }
+    
+  //metodo que redirige a la vista "intro.page.html"
+  async watchIntro() {
+    // Verifica si el usuario ya ha visto la introducción
+    if( await this.storageService.get('hasSeenIntro')==true){
+      
+      console.log('Ya has visto la introducción, redirigiendo a home');
+      this.router.navigateByUrl('/home');
+    
+    }else{
+      console.log('No has visto la introducción, redirigiendo a intro');
+      this.router.navigateByUrl('/intro');
+
+      // Marca que el usuario ha visto la introducción
+      await this.storageService.set('hasSeenIntro', true);
+    }
   }
 }
