@@ -1,22 +1,14 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <div class="profile-default">
-    <figure>
 
-      <img src="assets\images\default-user-icon-12.png" alt="Imagen default usuario">
-      <p>User credentials</p>
-    </figure>
-
+  <div class="shortPresentation">
+    <h2>splotify</h2>
+    <p>The best place where u could get information abaout ur favorite artist, genres, and listen some music</p>
   </div>
+
 
   <form  class="loginForm"  [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)">
     <ion-item>
-      <ion-input labelPlacement="floating" label="email" type="email" placeholder="example@splotify.com" formControlName="email"></ion-input>
+      <ion-input labelPlacement="floating" label="Email" type="email" placeholder="example@splotify.com" formControlName="email"></ion-input>
     </ion-item>
 
     <ion-item>
@@ -49,5 +41,10 @@
   </form>
 
   {{errorMessage}}
+
+  <p class="goRegister">
+    Dont have a account? <br>
+    <ion-button fill="clear" (click)="goRegister()">Register here</ion-button>
+  </p> 
   
 </ion-content>

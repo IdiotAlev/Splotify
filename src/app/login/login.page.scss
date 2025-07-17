@@ -1,3 +1,25 @@
+.shortPresentation {
+  text-align: justify;
+  margin-top: 60px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.shortPresentation h2 {
+  text-align: center;
+  font-family: "caveat", cursive;
+  color: var(--Primary-Color-Dark-Theme);
+  font-size: 4em;
+}
+
+.shortPresentation p {
+  margin-top: 50px;
+  text-align: center;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  color: var(--Primary-font-Color-Dark-Theme);
+  font-size: 1.2em;
+}
+
 .loginForm {
   display: flex;
   flex-direction: column;
@@ -5,15 +27,30 @@
   justify-content: center;
   padding: 20px;
   background-color: var(--Primary-Color-Ligth-Theme);
+  margin-top: 60px;
 }
 
-.profile-default img {
-    border-radius: 50%;
-    
+.loginForm ion-input {
+  font-size: 1em;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  background-color: var(--Primary-Color-Dark-Theme);
+  color: var(--Color-Font-Dark-Theme);
 }
 
-.profile-default p {
-   text-align:  center;
-    font-size: 1.2em;
-    
+.loginForm ion-button{
+  margin-top: 20px;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  color: var(--Color-Font-dark-Theme);
+}
+
+.goRegister {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  text-align: center;
+  color: var(--Primary-Color-Dark-Theme);
+  font-size: 1.2em;
+  margin-top: 60px;
+}
+
+.goRegister ion-button {
+  font-family: "M PLUS Rounded 1c", sans-serif;
 }
