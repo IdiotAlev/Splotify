@@ -6,9 +6,10 @@
 import { Component } from '@angular/core';
 import { IonicModule} from '@ionic/angular';
 import { CommonModule } from '@angular/common';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Router } from '@angular/router';
 import { StorageService } from '../services/storage.service';
+import { MusicService } from '../services/music.service';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @Component({
   //urls que afectan esta vista
@@ -17,9 +18,9 @@ import { StorageService } from '../services/storage.service';
   styleUrls: ['home.page.scss'],
   //modulos que se importan para esta vista
   imports: [IonicModule, CommonModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   //esquemas que se usan en esta vista
   //esto es necesario para que funcione swiper ya q es un componente personalizado y no un componente de angular
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class HomePage {
   //variables y datos que se usaran en la vista "home.page.html"
@@ -40,8 +41,11 @@ export class HomePage {
   fontTheme = this.fontLigthColor;
   acentTheme = this.acentLigthColor;
 
+  tracks:any;
+  albums:any;
+
   //constructor que se usa para inicializar la vista "home.page.html"
-  constructor(private router:Router , private storageService:StorageService) {}
+  constructor(private router:Router , private storageService:StorageService, private  musicService: MusicService) {}
 
   //metodos que se usan en la vista "home.page.html"
   viEstaSlide() {
@@ -49,8 +53,11 @@ export class HomePage {
   }
 
   async ngOnInit() {
+    this.loadTracks();
+    this.loadAlbums();
     // Este método se ejecuta al inicializar el componente
     await this.loadStorageData();
+    
   }
 
 
@@ -76,21 +83,19 @@ export class HomePage {
     await this.storageService.set('theme', this.backgroundTheme)
     console.log('Tema guardado en storage:', this.backgroundTheme);
   }
-    
-  //metodo que redirige a la vista "intro.page.html"
-  async watchIntro() {
-    // Verifica si el usuario ya ha visto la introducción
-    if( await this.storageService.get('hasSeenIntro')==true){
-      
-      console.log('Ya has visto la introducción, redirigiendo a home');
-      this.router.navigateByUrl('/home');
-    
-    }else{
-      console.log('No has visto la introducción, redirigiendo a intro');
-      this.router.navigateByUrl('/intro');
 
-      // Marca que el usuario ha visto la introducción
-      await this.storageService.set('hasSeenIntro', true);
-    }
+  loadTracks() {
+    this.musicService.getTracks().then(tracks => {  
+      this.tracks = tracks;
+      console.log('Tracks cargados:', this.tracks);
+    })
   }
+
+  loadAlbums() {
+    this.musicService.getAlbums().then(albums => {  
+      this.albums = albums;
+      console.log('albumes cargados:', this.albums);
+    })
+  }
+
 }

@@ -1,13 +1,38 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Home
-    </ion-title>
+    <ion-buttons>
+     <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Home</ion-title>
   </ion-toolbar>
 </ion-header>
+  
+<ion-content>
+
+  <swiper-container
+    pagination="false"
+    navigation="true"
+    scrollbar="false"
+    slides-per-view="3"
+    >
+
+    <swiper-slide *ngFor="let album of albums">
+      <div class="slide-content" [style.background-Color]="backgroundTheme" [style.color]="fontTheme">
+        <img src="albums.image">
+        <h5>{{ album.name }}</h5>
+      </div>
+    </swiper-slide>
+  </swiper-container> 
+  
+</ion-content>
+
+
+
+
+
 
 <ion-content >
-  <ion-buton (click)="cambiarTema()">Cambiar tema</ion-buton>
+  <ion-button (click)="cambiarTema()">Cambiar tema</ion-button>
   
   <ion-card [style.background-Color]="backgroundTheme" [style.color]="fontTheme">
     

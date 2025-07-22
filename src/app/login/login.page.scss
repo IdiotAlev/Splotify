@@ -7,7 +7,7 @@
 
 .shortPresentation h2 {
   text-align: center;
-  font-family: "caveat", cursive;
+  font-family: "caveat";
   color: var(--Primary-Color-Dark-Theme);
   font-size: 4em;
 }
@@ -46,11 +46,11 @@
 .goRegister {
   font-family: "M PLUS Rounded 1c", sans-serif;
   text-align: center;
-  color: var(--Primary-Color-Dark-Theme);
+  color: var(--Primary-Color-Light-Theme);
   font-size: 1.2em;
   margin-top: 60px;
 }
 
 .goRegister ion-button {
-  font-family: "M PLUS Rounded 1c", sans-serif;
+  margin-top: 2px;
 }

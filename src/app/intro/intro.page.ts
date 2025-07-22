@@ -61,6 +61,6 @@ export class IntroPage implements OnInit {
   goHome() {
     console.log("Go home clicked");
     this.Storage.set("intro viwed", true);
-    this.router.navigateByUrl("/home");
+    this.router.navigateByUrl("/menu/home");
   }
 }
