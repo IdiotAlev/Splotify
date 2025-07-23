@@ -43,6 +43,7 @@ export class HomePage {
 
   tracks:any;
   albums:any;
+  localArtists:any;
 
   //constructor que se usa para inicializar la vista "home.page.html"
   constructor(private router:Router , private storageService:StorageService, private  musicService: MusicService) {}
@@ -53,6 +54,7 @@ export class HomePage {
   }
 
   async ngOnInit() {
+    //this.getLocalArtists();
     this.loadTracks();
     this.loadAlbums();
     // Este método se ejecuta al inicializar el componente
@@ -98,4 +100,15 @@ export class HomePage {
     })
   }
 
+  //getLocalArtists() {
+  //  this.localArtists = this.musicService.getLocalArtists(); 
+  //  console.log('Artistas locales cargados:', this.localArtists.artists);
+  //
+
+  async showSongsByAlbum(albumId: string) {
+    console.log('Album ID:', albumId);
+    const songs = await this.musicService.getSongByAlbum(albumId);
+    console.log('Canciones del álbum:', songs);
+    
+  }
 }

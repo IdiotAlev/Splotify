@@ -16,7 +16,7 @@
     slides-per-view="3"
     >
 
-    <swiper-slide *ngFor="let album of albums">
+    <swiper-slide *ngFor="let album of albums" (click)="showSongsByAlbum(album.id)">
       <div class="slide-content" [style.background-Color]="backgroundTheme" [style.color]="fontTheme">
         <img src="albums.image">
         <h5>{{ album.name }}</h5>
@@ -25,10 +25,6 @@
   </swiper-container> 
   
 </ion-content>
-
-
-
-
 
 
 <ion-content >
