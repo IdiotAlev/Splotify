@@ -4,12 +4,13 @@
 //importa modulos
 
 import { Component } from '@angular/core';
-import { IonicModule} from '@ionic/angular';
+import { IonicModule, ModalController} from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { StorageService } from '../services/storage.service';
 import { MusicService } from '../services/music.service';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { SongsModalPagePage } from '../songs-modal-page.page.html/songs-modal-page.page';
 
 @Component({
   //urls que afectan esta vista
@@ -43,10 +44,10 @@ export class HomePage {
 
   tracks:any;
   albums:any;
-  localArtists:any;
+  artist:any;
 
   //constructor que se usa para inicializar la vista "home.page.html"
-  constructor(private router:Router , private storageService:StorageService, private  musicService: MusicService) {}
+  constructor(private router:Router , private storageService:StorageService, private  musicService: MusicService, private modalCntrll :ModalController) {}
 
   //metodos que se usan en la vista "home.page.html"
   viEstaSlide() {
@@ -57,6 +58,7 @@ export class HomePage {
     //this.getLocalArtists();
     this.loadTracks();
     this.loadAlbums();
+    this.loadArtist(); // Cargar un artista por defecto al iniciar
     // Este método se ejecuta al inicializar el componente
     await this.loadStorageData();
     
@@ -100,6 +102,13 @@ export class HomePage {
     })
   }
 
+  loadArtist() {
+    this.musicService.getArtist().then(artist => {
+      this.artist = artist;
+      console.log('Artista cargado:', this.artist);
+    })
+  }
+
   //getLocalArtists() {
   //  this.localArtists = this.musicService.getLocalArtists(); 
   //  console.log('Artistas locales cargados:', this.localArtists.artists);
@@ -109,6 +118,29 @@ export class HomePage {
     console.log('Album ID:', albumId);
     const songs = await this.musicService.getSongByAlbum(albumId);
     console.log('Canciones del álbum:', songs);
+
+    const modal = await this.modalCntrll.create({
+      component: SongsModalPagePage,
+      componentProps: {
+        'songs': songs
+      }
+    });
+    modal.present();
+
+  }
+
+  async showSongsByArtistId(artistId: string) {
+    console.log('Artist ID:', artistId);
+    const songs = await this.musicService.getSongByArtistId(artistId);
+    console.log('Canciones del artista:', songs);
+
+    const modal = await this.modalCntrll.create({
+      component: SongsModalPagePage,
+      componentProps: {
+        'songs': songs
+      }
+    });
+    modal.present();
     
   }
 }

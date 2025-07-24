@@ -16,6 +16,25 @@
     slides-per-view="3"
     >
 
+    <swiper-slide *ngFor="let artist of artist" (click)="showSongsByArtistId(artist.id)">
+      <div class="slide-content" [style.background-Color]="backgroundTheme" [style.color]="fontTheme">
+        <img src="artist.image">
+        <h5>{{ artist.name }}</h5>
+      </div>
+    </swiper-slide>
+  </swiper-container> 
+</ion-content>
+
+
+<ion-content>
+
+  <swiper-container
+    pagination="false"
+    navigation="true"
+    scrollbar="false"
+    slides-per-view="3"
+    >
+
     <swiper-slide *ngFor="let album of albums" (click)="showSongsByAlbum(album.id)">
       <div class="slide-content" [style.background-Color]="backgroundTheme" [style.color]="fontTheme">
         <img src="albums.image">
@@ -23,9 +42,7 @@
       </div>
     </swiper-slide>
   </swiper-container> 
-  
 </ion-content>
-
 
 <ion-content >
   <ion-button (click)="cambiarTema()">Cambiar tema</ion-button>
