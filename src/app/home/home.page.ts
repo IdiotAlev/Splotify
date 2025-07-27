@@ -129,13 +129,13 @@ export class HomePage {
     const songs = await this.musicService.getSongByAlbum(albumId);
     console.log('Canciones del álbum:', songs);
 
-    //const modal = await this.modalCntrll.create({
-      //component: SongsModalPagePage,
-     // componentProps: {
-      //  'songs': songs
-      //}
-    //});
-    //modal.present();
+    const modal = await this.modalCntrll.create({
+      component: SmpPage,
+      componentProps: {
+        'songs': songs
+      }
+    });
+    modal.present();
 
   }
 
@@ -144,12 +144,12 @@ export class HomePage {
     const songs = await this.musicService.getSongByArtistId(artistId);
     console.log('Canciones del artista:', songs);
 
-    const modal = await this.modalCntrll.create({
-      component: SmpPage,
-      componentProps: {
-        'songs': songs
-      }
-    });
+    //const modal = await this.modalCntrll.create({
+     // component: SmpPage,
+      //componentProps: {
+        //'songs': songs
+      //}
+    //});
     //modal.onDidDismiss().then((result) => {
       //if (result.data) {
         //console.log('Canción seleccionada:', result.data);

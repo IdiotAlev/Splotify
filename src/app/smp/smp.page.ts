@@ -1,20 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { NavParams,IonicModule, ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-smp',
   templateUrl: './smp.page.html',
   styleUrls: ['./smp.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [CommonModule, FormsModule, IonicModule]
 })
 export class SmpPage implements OnInit {
 
-  constructor() { }
+  songs: any;
+  constructor(private navParams : NavParams, private modalCntrll:ModalController) { }
 
   ngOnInit() {
+    this.songs = this.navParams.data['songs'];
+    console.log('Songs received in modal:', this.songs);
+  }
+  async selectSong(song: any) {
+    console.log('Selected song:', song);
+    await this.modalCntrll.dismiss(song);
   }
 
 }
