@@ -32,5 +32,9 @@ export const routes: Routes = [
     ]
     
   },
+  {
+    path: 'smp',
+    loadComponent: () => import('./smp/smp.page').then( m => m.SmpPage)
+  },
 
 ];

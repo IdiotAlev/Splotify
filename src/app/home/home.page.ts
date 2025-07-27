@@ -10,6 +10,9 @@ import { Router } from '@angular/router';
 import { StorageService } from '../services/storage.service';
 import { MusicService } from '../services/music.service';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { SmpPage } from '../smp/smp.page';
+
+// Importa el componente de modal de canciones
 
 @Component({
   //urls que afectan esta vista
@@ -141,12 +144,12 @@ export class HomePage {
     const songs = await this.musicService.getSongByArtistId(artistId);
     console.log('Canciones del artista:', songs);
 
-    //const modal = await this.modalCntrll.create({
-      //component: SongModalPage,
-      //componentProps: {
-        //'songs': songs
-      //}
-    //});
+    const modal = await this.modalCntrll.create({
+      component: SmpPage,
+      componentProps: {
+        'songs': songs
+      }
+    });
     //modal.onDidDismiss().then((result) => {
       //if (result.data) {
         //console.log('Canción seleccionada:', result.data);
