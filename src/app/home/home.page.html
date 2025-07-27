@@ -8,7 +8,17 @@
 </ion-header>
   
 <ion-content>
+  // Welcome card with a brief introduction
+  <ion-card [style.background-Color]="backgroundTheme" [style.color]="fontTheme" class="welcomeCard">
+    
+    <h2>Welcome to Splotify</h2>
 
+    <ion-card-content>
+      <p>Discover a world of music genres and explore your favorites!</p>
+    </ion-card-content>
+  </ion-card>
+
+  // Swiper for displaying artists and albums
   <swiper-container
     pagination="false"
     navigation="true"
@@ -23,16 +33,13 @@
       </div>
     </swiper-slide>
   </swiper-container> 
-</ion-content>
-
-
-<ion-content>
 
   <swiper-container
     pagination="false"
     navigation="true"
     scrollbar="false"
     slides-per-view="3"
+    class="homeSwipersContainer"
     >
 
     <swiper-slide *ngFor="let album of albums" (click)="showSongsByAlbum(album.id)">
@@ -42,25 +49,73 @@
       </div>
     </swiper-slide>
   </swiper-container> 
-</ion-content>
 
-<ion-content >
   <ion-button (click)="cambiarTema()">Cambiar tema</ion-button>
-  
-  <ion-card [style.background-Color]="backgroundTheme" [style.color]="fontTheme">
-    
-    <h2>Welcome to Splotify</h2>
-
-    <ion-card-content>
-      <p>Discover a world of music genres and explore your favorites!</p>
-    </ion-card-content>
-  </ion-card>
-
   <div>
-    <h3>Demo storage</h3>
-    <p>Guardar color de tema del storage</p>
     <div [style.background-Color]="backgroundTheme" [style.color]="fontTheme"></div>
     <p>Tema actual:{{backgroundTheme === ligthPrimaryColor ? 'obscuro' : 'claro'}}</p>
   </div>
-
 </ion-content>
+
+// Footer with music player controls
+<ion-footer [style.background-Color]="backgroundTheme" [style.color]="fontTheme" class="musicPlayer">
+
+  <ion-grid class="musicPlayerInfo">
+    <ion-row>
+      <ion-col size="2">
+       00:00
+      </ion-col>
+      <ion-col>
+        <ion-progress-bar size="1" value="0.2" [style.background-Color]="backgroundTheme"></ion-progress-bar>
+      </ion-col>
+      <ion-col size="2">
+       00:00
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid class="musiInfo">
+    <ion-row>
+        <ion-text color="danger" *ngIf="!song.name">
+          No hay cancion para reproducir
+        </ion-text>
+        <ion-text [style.color]="fontTheme" *ngIf="song.name">
+          <h2>{{ song.name }}</h2>
+        </ion-text>
+      </ion-row>
+  </ion-grid>
+  
+  <ion-grid class="musiControls">    
+    <ion-row>
+      <ion-col size="">
+        <ion-icon name="thumbs-up-outline"></ion-icon>
+      </ion-col>
+
+      <ion-col size="">
+        <ion-icon name="thumbs-down-outline"></ion-icon>
+      </ion-col>
+
+      <ion-col size="">
+        <ion-icon name="play-skip-back-outline"></ion-icon> 
+      </ion-col>
+
+      <ion-col size="">
+        <ion-icon name="play-outline"></ion-icon> 
+      </ion-col>
+
+      <ion-col size="">
+        <ion-icon name="play-skip-forward-outline"></ion-icon> 
+      </ion-col>
+
+      <ion-col size="">
+        <ion-icon name="heart-outline"></ion-icon>
+      </ion-col>
+
+      <ion-col size="">
+        <ion-icon name="play-skip-forward-outline"></ion-icon> 
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-footer>
+

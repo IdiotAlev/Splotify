@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
 import { StorageService } from '../services/storage.service';
 import { MusicService } from '../services/music.service';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { SongsModalPagePage } from '../songs-modal-page.page.html/songs-modal-page.page';
 
 @Component({
   //urls que afectan esta vista
@@ -45,6 +44,14 @@ export class HomePage {
   tracks:any;
   albums:any;
   artist:any;
+  currentSong:any;
+
+  song: any={
+    name:'',
+    artist: '',
+    previewUrl:'',
+    playing:'false'
+  };
 
   //constructor que se usa para inicializar la vista "home.page.html"
   constructor(private router:Router , private storageService:StorageService, private  musicService: MusicService, private modalCntrll :ModalController) {}
@@ -119,13 +126,13 @@ export class HomePage {
     const songs = await this.musicService.getSongByAlbum(albumId);
     console.log('Canciones del álbum:', songs);
 
-    const modal = await this.modalCntrll.create({
-      component: SongsModalPagePage,
-      componentProps: {
-        'songs': songs
-      }
-    });
-    modal.present();
+    //const modal = await this.modalCntrll.create({
+      //component: SongsModalPagePage,
+     // componentProps: {
+      //  'songs': songs
+      //}
+    //});
+    //modal.present();
 
   }
 
@@ -134,13 +141,20 @@ export class HomePage {
     const songs = await this.musicService.getSongByArtistId(artistId);
     console.log('Canciones del artista:', songs);
 
-    const modal = await this.modalCntrll.create({
-      component: SongsModalPagePage,
-      componentProps: {
-        'songs': songs
-      }
-    });
-    modal.present();
+    //const modal = await this.modalCntrll.create({
+      //component: SongModalPage,
+      //componentProps: {
+        //'songs': songs
+      //}
+    //});
+    //modal.onDidDismiss().then((result) => {
+      //if (result.data) {
+        //console.log('Canción seleccionada:', result.data);
+        //this.song = result.data;
+      //}
+    //}); 
+    //modal.present();
     
   }
 }
+

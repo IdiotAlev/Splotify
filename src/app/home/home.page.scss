@@ -1,29 +1,3 @@
-.slide-content {
-  text-align: center;
-  padding: 20px;
-  background-color: var(--Secundary-Color-Dark-Theme); /* Optional: Change background color */
-  color: var(--Color-Font-ligth-Theme); /* Optional: Change text color */
+.homeSwipersContainer {
+  margin-top: 20px;
 }
-
-.slide-content img {
-  width: 50%;
-  height: 50%;
-  
-}
-
-.slide-content h2 {
-  font-size: 3.5em;
-  color: var(--Color-Font-dark-Theme);/* Optional: Add a border for emphasis */
-  border-radius: 1px;
-}
-
-.slide-content p {
-  font-size: 1em;
-  color: #333; /* Optional: Change text color */
-}
-
-.button{
-color: var(--Accent-Color-dark-Theme);
-  
-}
-

@@ -34,6 +34,10 @@ export class MenuPage implements OnInit {
       // Marca que el usuario ha visto la introducción
       await this.storageService.set('hasSeenIntro', true);
     }
-  }
+  } 
 
+  switchTheme() {
+    // Cambia el tema de la aplicación
+    console.log('Cambiando tema');
+  }
 }
