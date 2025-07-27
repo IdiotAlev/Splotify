@@ -18,7 +18,7 @@
     </ion-card-content>
   </ion-card>
 
-  // Swiper for displaying artists and albums
+ 
   <swiper-container
     pagination="false"
     navigation="true"
@@ -42,7 +42,7 @@
     class="homeSwipersContainer"
     >
 
-    <swiper-slide *ngFor="let album of albums" (click)="showSongsByAlbum(album.id)">
+    <swiper-slide *ngFor="let album of albums" (click)="showSongsByAlbumId(album.id)">
       <div class="slide-content" [style.background-Color]="backgroundTheme" [style.color]="fontTheme">
         <img src="albums.image">
         <h5>{{ album.name }}</h5>

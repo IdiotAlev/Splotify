@@ -11,6 +11,7 @@ import { StorageService } from '../services/storage.service';
 import { MusicService } from '../services/music.service';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { SmpPage } from '../smp/smp.page';
+import { AmpPage } from '../amp/amp.page';
 
 // Importa el componente de modal de canciones
 
@@ -124,10 +125,23 @@ export class HomePage {
   //  console.log('Artistas locales cargados:', this.localArtists.artists);
   //
 
-  async showSongsByAlbum(albumId: string) {
+  async showSongsByAlbumId(albumId: string) {
     console.log('Album ID:', albumId);
-    const songs = await this.musicService.getSongByAlbum(albumId);
+    const songs = await this.musicService.getSongByAlbumId(albumId);
     console.log('Canciones del álbum:', songs);
+
+    const modal = await this.modalCntrll.create({
+      component: AmpPage,
+      componentProps: {
+        'songs': songs
+      }
+    });
+    modal.present();
+  }
+
+  async showSongsByArtistId(artistId: string) {
+    const songs = await this.musicService.getSongByArtistId(artistId);
+    console.log('Artist ID:', artistId,'Canciones del artista:', songs);
 
     const modal = await this.modalCntrll.create({
       component: SmpPage,
@@ -135,28 +149,13 @@ export class HomePage {
         'songs': songs
       }
     });
+    modal.onDidDismiss().then((result) => {
+      if (result.data) {
+        console.log('Canción seleccionada:', result.data);
+        this.song = result.data;
+      }
+    }); 
     modal.present();
-
-  }
-
-  async showSongsByArtistId(artistId: string) {
-    console.log('Artist ID:', artistId);
-    const songs = await this.musicService.getSongByArtistId(artistId);
-    console.log('Canciones del artista:', songs);
-
-    //const modal = await this.modalCntrll.create({
-     // component: SmpPage,
-      //componentProps: {
-        //'songs': songs
-      //}
-    //});
-    //modal.onDidDismiss().then((result) => {
-      //if (result.data) {
-        //console.log('Canción seleccionada:', result.data);
-        //this.song = result.data;
-      //}
-    //}); 
-    //modal.present();
     
   }
 }

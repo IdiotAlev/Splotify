@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { NavParams,IonicModule, ModalController } from '@ionic/angular';
+import { NavParams, IonicModule } from '@ionic/angular';
+import { ModalController } from '@ionic/angular/standalone';
+
 
 @Component({
   selector: 'app-smp',
   templateUrl: './smp.page.html',
   styleUrls: ['./smp.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, IonicModule]
+  imports: [CommonModule, FormsModule,IonicModule]
 })
 export class SmpPage implements OnInit {
 
