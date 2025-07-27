@@ -21,9 +21,8 @@ export class SmpPage implements OnInit {
     this.songs = this.navParams.data['songs'];
     console.log('Songs received in modal:', this.songs);
   }
-  async selectSong(song: any) {
-    console.log('Selected song:', song);
-    await this.modalCntrll.dismiss(song);
-  }
+    async selectSong(song: any) {
+      await this.modalCntrll.dismiss(song);
+    }
 
 }

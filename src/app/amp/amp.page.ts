@@ -20,4 +20,7 @@ export class AmpPage implements OnInit {
     this.songs = this.navParams.data['songs'];
     console.log('Canciones recibidas en el modal', this.songs);
   }
+  async selectSong(song: any) {
+    await this.modalCntrll.dismiss(song);
+  }
 }

@@ -48,14 +48,16 @@ export class HomePage {
   tracks:any;
   albums:any;
   artist:any;
-  currentSong:any;
+  newTime: any;
 
   song: any={
     name:'',
     artist: '',
-    previewUrl:'',
+    preview_url:'',
     playing:'false'
   };
+
+  
 
   //constructor que se usa para inicializar la vista "home.page.html"
   constructor(private router:Router , private storageService:StorageService, private  musicService: MusicService, private modalCntrll :ModalController) {}
@@ -157,6 +159,36 @@ export class HomePage {
     }); 
     modal.present();
     
+  }
+
+  play(){
+    this.song.playing="true";
+    const currentSong= new Audio(this.song.preview_url);
+    currentSong.play();
+
+    console.log('cancion sonando') 
+
+    currentSong.addEventListener("timeupdate", ()=>{
+      this.newTime=( currentSong.currentTime * (currentSong.duration / 10)) /100;
+    }) 
+    
+
+  }
+
+  pause(){
+    //this.currentSong.pause();
+    this.song.playing="false"
+    console.log('cancion pausada')
+
+  }
+
+  formatTime(seconds: number){
+
+    if(!seconds || isNaN(seconds)) return "00:00";
+    const minutes = Math.floor(seconds/60);
+    const rSeconds = Math.floor(seconds % 60);
+
+    return `${minutes}:${rSeconds.toString().padStart(2, '0')}`
   }
 }
 
