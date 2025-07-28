@@ -6,7 +6,7 @@
   </div>
 
 
-  <form  class="loginForm"  [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)">
+  <form  class="loginForm"  [formGroup]="loginForm" (ngSubmit)="loginUse(loginForm.value)">
     <ion-item>
       <ion-input labelPlacement="floating" label="Email" type="email" placeholder="example@splotify.com" formControlName="email"></ion-input>
     </ion-item>
@@ -40,7 +40,8 @@
     </ion-button>
   </form>
 
-  {{errorMessage}}
+  <div color="danger">{{errorMessage}}</div>
+  
 
   <p class="goRegister">
     Dont have a account? <br>

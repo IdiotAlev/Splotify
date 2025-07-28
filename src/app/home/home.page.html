@@ -1,14 +1,12 @@
-<ion-header>
+  <ion-header>
   <ion-toolbar>
     <ion-buttons>
-     <ion-menu-button></ion-menu-button>
+      <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Home</ion-title>
   </ion-toolbar>
 </ion-header>
   
 <ion-content>
-  // Welcome card with a brief introduction
   <ion-card [style.background-Color]="backgroundTheme" [style.color]="fontTheme" class="welcomeCard">
     
     <h2>Welcome to Splotify</h2>
@@ -28,7 +26,7 @@
 
     <swiper-slide *ngFor="let artist of artist" (click)="showSongsByArtistId(artist.id)">
       <div class="slide-content" [style.background-Color]="backgroundTheme" [style.color]="fontTheme">
-        <img src="artist.image">
+        <img src="{{artist.image}}">
         <h5>{{ artist.name }}</h5>
       </div>
     </swiper-slide>
@@ -44,32 +42,31 @@
 
     <swiper-slide *ngFor="let album of albums" (click)="showSongsByAlbumId(album.id)">
       <div class="slide-content" [style.background-Color]="backgroundTheme" [style.color]="fontTheme">
-        <img src="albums.image">
+        <img src="{{album.image}}">
         <h5>{{ album.name }}</h5>
       </div>
     </swiper-slide>
   </swiper-container> 
 
-  <ion-button (click)="cambiarTema()">Cambiar tema</ion-button>
-  <div>
-    <div [style.background-Color]="backgroundTheme" [style.color]="fontTheme"></div>
-    <p>Tema actual:{{backgroundTheme === ligthPrimaryColor ? 'obscuro' : 'claro'}}</p>
-  </div>
+  <ion-button  [style.color]="fontTheme" (click)="cambiarTema()">Cambiar tema a tema {{backgroundTheme === ligthPrimaryColor ? 'obscuro' : 'claro'}} </ion-button>
+
 </ion-content>
 
-// Footer with music player controls
 <ion-footer [style.background-Color]="backgroundTheme" [style.color]="fontTheme" class="musicPlayer">
+
 
   <ion-grid class="musicPlayerInfo">
     <ion-row>
       <ion-col size="2">
-       {{currentSong?.currentTime || "00:00"}}
+       {{formatTime(currenSong?.currentTime) || "00:00"}}  
       </ion-col>
+
       <ion-col>
-        <ion-progress-bar size="1" value="0.2" [style.background-Color]="backgroundTheme"></ion-progress-bar>
+        <ion-progress-bar size="1" value="newTime || 0" [style.background-Color]="backgroundTheme"></ion-progress-bar>
       </ion-col>
+
       <ion-col size="2">
-       {{formatTime(currentSong?.duration) || "00:00"}}
+        {{formatTime(getRtime())  || "00:00"}}
       </ion-col>
     </ion-row>
   </ion-grid>

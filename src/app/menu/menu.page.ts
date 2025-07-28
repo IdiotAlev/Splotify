@@ -40,4 +40,15 @@ export class MenuPage implements OnInit {
     // Cambia el tema de la aplicación
     console.log('Cambiando tema');
   }
+
+  async logOut(){
+
+    await this.storageService.remove('user')
+    await this.storageService.remove('pws')
+    console.log('Se ha borrado el storage')
+    this.router.navigateByUrl('/login');
+
+
+
+  }
 }

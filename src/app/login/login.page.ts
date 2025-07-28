@@ -16,6 +16,7 @@ import { StorageService } from '../services/storage.service';
 })
 export class LoginPage implements OnInit {
   // Variables
+  users:any;
   // Mensaje de error
   errorMessage: string = '';
   // Formulario de login
@@ -52,15 +53,17 @@ export class LoginPage implements OnInit {
    }
 
   ngOnInit() {
+    
   }
 
-  loginUser(credentials: any) {
+  loginUse(credentials: any) {
 
     this.authService.loginUse(credentials).then(res => {
 
       console.log(res);
       this.storage.set('user', credentials.email);
       this.storage.set('pws', credentials.password);
+      this.storage.set('login', true)
       this.navCtrl.navigateForward('/intro');
 
     }).catch(err => {
@@ -69,6 +72,7 @@ export class LoginPage implements OnInit {
       this.errorMessage = err;
     } );
   }
+  
   goRegister() {
     this.navCtrl.navigateForward('/register');
   }

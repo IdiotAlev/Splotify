@@ -5,6 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
 
+  urlServer='http://music.fly.dev'
+
   constructor() { }
 
   loginUse(credendials: any){
@@ -20,4 +22,9 @@ export class AuthService {
     });
   }
 
+  async getUsers(){
+    return fetch(`${this.urlServer}/login`).then(
+    response => response.json())
+  }
+  
 }

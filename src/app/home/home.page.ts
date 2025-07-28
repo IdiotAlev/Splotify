@@ -48,6 +48,8 @@ export class HomePage {
   tracks:any;
   albums:any;
   artist:any;
+  currenSong: any={};
+
   newTime: any;
 
   song: any={
@@ -71,7 +73,8 @@ export class HomePage {
     //this.getLocalArtists();
     this.loadTracks();
     this.loadAlbums();
-    this.loadArtist(); // Cargar un artista por defecto al iniciar
+    this.loadArtist();
+     // Cargar un artista por defecto al iniciar
     // Este método se ejecuta al inicializar el componente
     await this.loadStorageData();
     
@@ -122,6 +125,7 @@ export class HomePage {
     })
   }
 
+
   //getLocalArtists() {
   //  this.localArtists = this.musicService.getLocalArtists(); 
   //  console.log('Artistas locales cargados:', this.localArtists.artists);
@@ -163,23 +167,22 @@ export class HomePage {
 
   play(){
     this.song.playing="true";
-    const currentSong= new Audio(this.song.preview_url);
-    currentSong.play();
+    this.currenSong= new Audio(this.song.preview_url);
+    this.currenSong.play();
 
     console.log('cancion sonando') 
 
-    currentSong.addEventListener("timeupdate", ()=>{
-      this.newTime=( currentSong.currentTime * (currentSong.duration / 10)) /100;
+    this.currenSong.addEventListener("timeupdate", ()=>{
+      this.newTime=( this.currenSong.currentTime / this.currenSong.duration)
     }) 
-    
+    this.song.playing=true
 
   }
 
   pause(){
-    //this.currentSong.pause();
-    this.song.playing="false"
+    this.currenSong.pause()
+    this.currenSong.playing="false"
     console.log('cancion pausada')
-
   }
 
   formatTime(seconds: number){
@@ -190,5 +193,13 @@ export class HomePage {
 
     return `${minutes}:${rSeconds.toString().padStart(2, '0')}`
   }
+
+  getRtime(){
+    if(!this.currenSong?.duration || !this.currenSong?.currentTime){
+      return 0
+    }
+    return this.currenSong.duration - this.currenSong.currentTime
+  }
+
 }
 

@@ -1,3 +1,26 @@
 .homeSwipersContainer {
   margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.slide-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  
+}
+.slide-content img{
+  padding: 10px;
+  border-radius: 40%;
+  justify-content: center;
+  max-height: 200px;
+}
+
+.h2{
+  text-align: center;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  color: var(--Primary-Color-Dark-Theme);
+  font-size: 4em;
 }

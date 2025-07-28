@@ -11,7 +11,7 @@ export const routes: Routes = [
   },
   {
     path: 'intro',
-    loadComponent: () => import('./intro/intro.page').then( m => m.IntroPage)
+    loadComponent: () => import('./intro/intro.page').then( m => m.IntroPage), canActivate: [ loginGuard, IntroGuard ]
   },
   {
     path: 'login',
@@ -23,7 +23,7 @@ export const routes: Routes = [
   },
   {
     path: 'menu',
-    loadComponent: () => import('./menu/menu.page').then( m => m.MenuPage),   
+    loadComponent: () => import('./menu/menu.page').then( m => m.MenuPage), canActivate: [ loginGuard, IntroGuard ],
     children:[
       {
         path: 'home',
@@ -34,11 +34,11 @@ export const routes: Routes = [
   },
   {
     path: 'smp',
-    loadComponent: () => import('./smp/smp.page').then( m => m.SmpPage)
+    loadComponent: () => import('./smp/smp.page').then( m => m.SmpPage), canActivate: [ loginGuard, IntroGuard ]
   },
-  //{
-   // path: 'amp',
-    //loadComponent: () => import('./amp/amp.page').then( m => m.AmpPage)
-  //},
+  {
+    path: 'amp',
+    loadComponent: () => import('./amp/amp.page').then( m => m.AmpPage), canActivate: [ loginGuard, IntroGuard ]
+  },
 
 ];

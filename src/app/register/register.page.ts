@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule,NavController } from '@ionic/angular';
 import { StorageService } from '../services/storage.service';
 
 
@@ -25,13 +25,15 @@ export class RegisterPage implements OnInit {
       { type: 'required', message: 'Contraseña es obligatoria' },
       { type: 'minlength', message: 'Contraseña debe tener al menos 6 caracteres' }
     ],
-    confirmPassword: [
-      { type: 'required', message: 'Contraseña es obligatoria' },
-      { type: 'minlength', message: 'Contraseña debe tener al menos 6 caracteres' }
+    nombre: [
+      { type: 'required', message: 'Nombre es obligatorio' },
     ],
+    apellido: [
+      { type: 'required', message: 'Apellido es obligatorio' },
+    ]
   };
 
-  constructor(private formBuilder:FormBuilder , private storageService: StorageService) {
+  constructor(private formBuilder:FormBuilder , private storageService: StorageService, private navCtrl : NavController) {
 
     // Inicializa o formulário de login con o FormBuilder
     this.registerForm = this.formBuilder.group({
@@ -46,9 +48,13 @@ export class RegisterPage implements OnInit {
           Validators.required,
           Validators.minLength(6),
       ])),
-      confirmPassword: new FormControl('',
+      nombre: new FormControl('',
         Validators.compose([
-          Validators.minLength(6),
+          Validators.required,
+      ])),
+      apellido: new FormControl('',
+        Validators.compose([
+          Validators.required,
       ]))
     });
   }
@@ -56,10 +62,14 @@ export class RegisterPage implements OnInit {
   ngOnInit() {
   }
 
-  async registerUser(credentials: any) {
-    await this.storageService.set('user', credentials);
+  registerUser(credentials: any) {
+    this.storageService.set("user", credentials.email)
+    this.storageService.set('pws', credentials.password)
     console.log('Usuario registrado:', credentials);
-
+    this.navCtrl.navigateForward('/login');
   }
 
+  goLogin(){
+    this.navCtrl.navigateForward('/login');
+  }
 }
