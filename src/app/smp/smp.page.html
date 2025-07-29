@@ -1,8 +1,8 @@
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let song of songs; index as i" (click)="selectSong(song)">
-      <ion-avatar>
-        {{ i + 1}}
+    <ion-item *ngFor="let song of songs; index as i" (click)="selectSong(song)" class="song-item">
+      <ion-avatar slot="start" class="song-avatar">
+        <div class="song-number">{{ i + 1 }}</div>
       </ion-avatar>
       <ion-label>
         <h2>{{ song.name }}</h2>
@@ -10,3 +10,4 @@
     </ion-item>
   </ion-list>
 </ion-content>
+

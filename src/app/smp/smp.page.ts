@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NavParams, IonicModule } from '@ionic/angular';
 import { ModalController } from '@ionic/angular/standalone';
+import { MusicService } from '../services/music.service';
 
 
 @Component({
@@ -14,8 +15,9 @@ import { ModalController } from '@ionic/angular/standalone';
 })
 export class SmpPage implements OnInit {
 
+  artist:any;
   songs: any;
-  constructor(private navParams : NavParams, private modalCntrll:ModalController) { }
+  constructor(private navParams : NavParams, private modalCntrll:ModalController, private musicService:MusicService) { }
 
   ngOnInit() {
     this.songs = this.navParams.data['songs'];
@@ -25,4 +27,6 @@ export class SmpPage implements OnInit {
       await this.modalCntrll.dismiss(song);
     }
 
+    
+  
 }
