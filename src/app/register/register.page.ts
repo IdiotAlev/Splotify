@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { IonicModule,NavController } from '@ionic/angular';
+import { AuthService } from '../services/auth.service';
 import { StorageService } from '../services/storage.service';
 
 
@@ -14,6 +15,7 @@ import { StorageService } from '../services/storage.service';
 })
 export class RegisterPage implements OnInit {
 
+  errorMessage:any;
   // Formulario de registro
   registerForm: FormGroup;
   validationMessages = {
@@ -33,7 +35,7 @@ export class RegisterPage implements OnInit {
     ]
   };
 
-  constructor(private formBuilder:FormBuilder , private storageService: StorageService, private navCtrl : NavController) {
+  constructor(private formBuilder:FormBuilder , private storage: StorageService, private navCtrl : NavController, private authService: AuthService) {
 
     // Inicializa o formulário de login con o FormBuilder
     this.registerForm = this.formBuilder.group({
@@ -62,12 +64,19 @@ export class RegisterPage implements OnInit {
   ngOnInit() {
   }
 
-  registerUser(credentials: any) {
-    this.storageService.set("user", credentials.email)
-    this.storageService.set('pws', credentials.password)
-    console.log('Usuario registrado:', credentials);
-    this.navCtrl.navigateForward('/login');
-  }
+  registerUser(formData: any) {
+  this.authService.registerUser(formData)
+    .then((res:any) => {
+      console.log(res);
+      this.storage.set('user', res.user.email);
+      this.storage.set('login', true);
+      this.navCtrl.navigateForward('/login');
+    })
+    .catch((err => {
+      this.errorMessage = err;
+      console.error(err);
+    }));
+}
 
   goLogin(){
     this.navCtrl.navigateForward('/login');

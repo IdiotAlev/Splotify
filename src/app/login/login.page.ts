@@ -57,23 +57,21 @@ export class LoginPage implements OnInit {
   }
 
   loginUse(credentials: any) {
-
-    this.authService.loginUse(credentials).then(res => {
-
+  this.authService.loginUse(credentials)
+    .then((res: any) => {
       console.log(res);
-      this.storage.set('user', credentials.email);
-      this.storage.set('pws', credentials.password);
-      this.storage.set('login', true)
+      this.storage.set('user', res.user.email);
+      this.storage.set('login', true);
       this.navCtrl.navigateForward('/intro');
-
-    }).catch(err => {
-      console.error(err);
-      // mostrar un mensaje de error al usuario
+    })
+    .catch(err => {
       this.errorMessage = err;
-    } );
+      console.error(err);
+    });
   }
   
   goRegister() {
     this.navCtrl.navigateForward('/register');
   }
+
 }
