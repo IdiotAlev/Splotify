@@ -1,3 +1,10 @@
+ion-toolbar {
+  --background: var(--Primary-Color-Ligth-Theme);
+  color: var(--Background-Color-Ligth-Theme);
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-weight: bold;
+}
+
 .song-item {
   --background: var(--Primary-Color-Ligth-Theme); // Fondo oscuro
   border-radius: 12px;

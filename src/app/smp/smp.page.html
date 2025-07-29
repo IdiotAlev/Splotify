@@ -1,3 +1,9 @@
+<ion-header *ngIf="artist">
+  <ion-toolbar>
+    <ion-title>{{ artist.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content>
   <ion-list>
     <ion-item *ngFor="let song of songs; index as i" (click)="selectSong(song)" class="song-item">

@@ -20,6 +20,7 @@ export class SmpPage implements OnInit {
   constructor(private navParams : NavParams, private modalCntrll:ModalController, private musicService:MusicService) { }
 
   ngOnInit() {
+    this.loadArtist();
     this.songs = this.navParams.data['songs'];
     console.log('Songs received in modal:', this.songs);
   }
@@ -27,6 +28,11 @@ export class SmpPage implements OnInit {
       await this.modalCntrll.dismiss(song);
     }
 
-    
+  loadArtist() {
+    this.musicService.getArtist().then(artist => {
+      this.artist = artist;
+      console.log('Artista cargado  modal :', this.artist);
+    })
+  }
   
 }
