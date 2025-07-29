@@ -1,51 +1,53 @@
-<ion-content>
-
-  <div class="shortPresentation">
-    <h2>splotify</h2>
-    <p>The best place where u could get information abaout ur favorite artist, genres, and listen some music</p>
-  </div>
-
-
-  <form  class="loginForm"  [formGroup]="loginForm" (ngSubmit)="loginUse(loginForm.value)">
-    <ion-item>
-      <ion-input labelPlacement="floating" label="Email" type="email" placeholder="example@splotify.com" formControlName="email"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-input labelPlacement="floating" label="Password" type="password" placeholder="#MyPassw0rd123*" formControlName="password"></ion-input>
-    </ion-item>
-
-    <div>
-      <ng-container *ngFor="let validation of validationMessages.email">
-        <div *ngIf="(
-          loginForm.get('email')?.hasError(validation.type) && loginForm.get('email')?.dirty
-          )">
-          {{validation.message}}
-        </div>
-      </ng-container>
-
-      <ng-container *ngFor="let validation of validationMessages.password">
-        <div *ngIf="(
-          loginForm.get('password')?.hasError(validation.type) && loginForm.get('password')?.dirty
-          )">
-          {{validation.message}}
-        </div>
-      </ng-container>
+<ion-content [fullscreen]="true">
+  <div class="login-container">
+    <div class="shortPresentation">
+      <h2>Splotify</h2>
+      <p>The best place where you can explore your favorite artists, genres, and listen to some music.</p>
     </div>
 
-    <ion-button
-     [disabled]="!loginForm.valid"
-     type="submit">
-     Login
-    </ion-button>
-  </form>
+    <form class="loginForm" [formGroup]="loginForm" (ngSubmit)="loginUse(loginForm.value)">
+      <ion-item lines="inset">
+        <ion-input
+          label="Email"
+          labelPlacement="floating"
+          type="email"
+          placeholder="example@splotify.com"
+          formControlName="email"
+        ></ion-input>
+      </ion-item>
 
-  <div color="danger">{{errorMessage}}</div>
-  
+      <ion-item lines="inset">
+        <ion-input
+          label="Password"
+          labelPlacement="floating"
+          type="password"
+          placeholder="#MyPassw0rd123*"
+          formControlName="password"
+        ></ion-input>
+      </ion-item>
 
-  <p class="goRegister">
-    Dont have a account? <br>
-    <ion-button fill="clear" (click)="goRegister()">Register here</ion-button>
-  </p> 
-  
+      <div class="validationErrors">
+        <ng-container *ngFor="let validation of validationMessages.email">
+          <div *ngIf="loginForm.get('email')?.hasError(validation.type) && loginForm.get('email')?.dirty">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+
+        <ng-container *ngFor="let validation of validationMessages.password">
+          <div *ngIf="loginForm.get('password')?.hasError(validation.type) && loginForm.get('password')?.dirty">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
+      <ion-button expand="block" type="submit" [disabled]="!loginForm.valid">Login</ion-button>
+
+      <div class="errorMessage" *ngIf="errorMessage">{{ errorMessage }}</div>
+    </form>
+
+    <div class="goRegister">
+      Don’t have an account? <br />
+      <ion-button fill="clear" size="small" (click)="goRegister()">Register here</ion-button>
+    </div>
+  </div>
 </ion-content>

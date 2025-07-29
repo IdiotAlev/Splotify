@@ -1,56 +1,89 @@
+.login-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100%;
+  background-color: var(--Primary-Color-Ligth-Theme);
+  color: var(--Color-Font-Dark-Theme);
+  transition: background-color 0.3s ease;
+}
+
 .shortPresentation {
-  text-align: justify;
-  margin-top: 60px;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.shortPresentation h2 {
   text-align: center;
-  font-family: "caveat";
-  color: var(--Primary-Color-Dark-Theme);
-  font-size: 4em;
-}
+  margin-bottom: 40px;
+  padding: 0 20px;
 
-.shortPresentation p {
-  margin-top: 50px;
-  text-align: center;
-  font-family: "M PLUS Rounded 1c", sans-serif;
-  color: var(--Primary-font-Color-Dark-Theme);
-  font-size: 1.2em;
+  h2 {
+    font-family: "Caveat", cursive;
+    font-size: 3.5em;
+    color: var(--Accent-Color-Dark-Theme);
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-size: 1.1em;
+    color: var(--Color-Font-Dark-Theme);
+    line-height: 1.5;
+  }
 }
 
 .loginForm {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  gap: 16px;
   padding: 20px;
-  background-color: var(--Primary-Color-Ligth-Theme);
-  margin-top: 60px;
-}
-
-.loginForm ion-input {
-  font-size: 1em;
-  font-family: "M PLUS Rounded 1c", sans-serif;
   background-color: var(--Primary-Color-Dark-Theme);
-  color: var(--Color-Font-Dark-Theme);
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.05);
+  transition: background-color 0.3s ease;
 }
 
-.loginForm ion-button{
-  margin-top: 20px;
+ion-item {
+  --background: var(--Secundary-Color-Dark-Theme);
+  border-radius: 8px;
+  margin-bottom: 8px;
+
+  ion-input {
+    color: var(--Color-Font-Dark-Theme);
+    font-family: "M PLUS Rounded 1c", sans-serif;
+  }
+}
+
+ion-button {
   font-family: "M PLUS Rounded 1c", sans-serif;
-  color: var(--Color-Font-dark-Theme);
+  font-weight: bold;
+  --color: var(--Primary-Color-Ligth-Theme);
+  --background: var(--Accent-Color-Ligth-Theme);
+  --background-hover: var(--Accent-Color-Dark-Theme);
+  transition: all 0.3s ease;
+}
+
+.validationErrors {
+  font-size: 0.85em;
+  color: #ff6b6b;
+  margin-top: -8px;
+  margin-bottom: 8px;
+}
+
+.errorMessage {
+  text-align: center;
+  color: #ff6b6b;
+  font-size: 0.9em;
+  margin-top: 10px;
 }
 
 .goRegister {
-  font-family: "M PLUS Rounded 1c", sans-serif;
   text-align: center;
-  color: var(--Primary-Color-Light-Theme);
-  font-size: 1.2em;
-  margin-top: 60px;
-}
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-size: 1em;
+  margin-top: 40px;
+  color: var(--Color-Font-Dark-Theme);
 
-.goRegister ion-button {
-  margin-top: 2px;
+  ion-button {
+    margin-top: 4px;
+    --color: var(--Primary-Color-Ligth-Theme);
+    font-size: 0.95em;
+  }
 }
