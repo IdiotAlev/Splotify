@@ -1,4 +1,25 @@
-// home.page.scss
+ion-toolbar {
+  --background: var(--Primary-Color-Ligth-Theme);
+  --color: var(--Color-Font-Dark-Theme);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  transition: background-color 0.3s ease-in-out;
+
+  ion-title {
+    font-family: "caveat", sans-serif;
+    font-size: 1.4em;
+  }
+
+  ion-menu-button {
+    font-size: 1.8em;
+    color: var(--Accent-Color-Ligth-Theme);
+  }
+
+  ion-icon {
+    font-size: 1.6em;
+    color: var(--Accent-Color-Ligth-Theme);
+  }
+}
+
 
 ion-content {
   padding: 16px;

@@ -2,25 +2,37 @@
   <ion-menu contentId="mainContent" type="push">
     <ion-header>
       <ion-toolbar>
-        <ion-title>Menu</ion-title>
+        <ion-title>Menú</ion-title>
         <ion-menu-toggle>
-        <ion-icon name="reorder-three-outline"></ion-icon>
+          <ion-icon name="reorder-three-outline"></ion-icon>
         </ion-menu-toggle>
       </ion-toolbar>
     </ion-header>
 
     <ion-content>
       <ion-list>
-        <ion-item><ion-icon name="play-circle-outline"></ion-icon><ion-button (click)="watchIntro()">Ver intro</ion-button></ion-item>
-        <ion-item><ion-icon name="contrast-outline" ></ion-icon>Cambiar tema</ion-item>
-        <ion-item><ion-icon name="settings-outline"></ion-icon>Settings</ion-item>
-        <ion-item><ion-icon name="log-in-outline"></ion-icon><ion-button (click)="logOut()">Cerrar sesion</ion-button></ion-item>
+        <ion-item button (click)="watchIntro()">
+          <ion-icon name="play-circle-outline" slot="start"></ion-icon>
+          Ver Intro
+        </ion-item>
 
-        
+        <ion-item>
+          <ion-icon name="contrast-outline" slot="start"></ion-icon>
+          Cambiar tema
+        </ion-item>
+
+        <ion-item>
+          <ion-icon name="settings-outline" slot="start"></ion-icon>
+          Settings
+        </ion-item>
+
+        <ion-item button (click)="logOut()">
+          <ion-icon name="log-in-outline" slot="start"></ion-icon>
+          Cerrar sesión
+        </ion-item>
       </ion-list>
     </ion-content>
-
   </ion-menu>
 
-  <ion-router-outlet id="mainContent"></ion-router-outlet> 
+  <ion-router-outlet id="mainContent"></ion-router-outlet>
 </ion-split-pane>
